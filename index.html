@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>天正遣欧少年使節 ― 4つの運命</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+
+    <!-- 1. タイトル画面 -->
+    <section id="title-screen" class="screen active">
+      <div class="title-content">
+        <p class="subtitle">選択型歴史アドベンチャー</p>
+        <h1 class="main-title">天正遣欧少年使節<br><span>― 4つの運命 ―</span></h1>
+        <p class="catchcopy">「4人の少年。ひとつの旅。異なる人生。」</p>
+
+        <div class="visual-placeholder">
+          <span>[ メインビジュアル領域 ]</span>
+        </div>
+
+        <div class="menu-buttons">
+          <button id="btn-new-game" class="primary-btn">はじめから</button>
+          <button id="btn-continue" class="secondary-btn" disabled>つづきから</button>
+          <button id="btn-profiles" class="secondary-btn">人物紹介</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 主人公選択画面 -->
+    <section id="select-screen" class="screen">
+      <h2 class="screen-title">主人公を選択してください</h2>
+      <p class="screen-desc">誰の視点で旅立ち、その後の人生を歩みますか？</p>
+      <div id="protagonist-list" class="card-grid">
+        <!-- main.js で4人のカードを生成 -->
+      </div>
+      <div class="footer-buttons">
+        <button id="btn-back-to-title" class="secondary-btn">タイトルへ戻る</button>
+      </div>
+    </section>
+
+    <!-- 3. ストーリー画面 -->
+    <section id="story-screen" class="screen">
+      <!-- 上部ステータス・メタ情報 -->
+      <header class="story-header">
+        <div class="meta-info">
+          <span id="story-date" class="meta-tag">1582年</span>
+          <span id="story-location" class="meta-tag">長崎</span>
+          <span id="story-status" class="status-badge">史実</span>
+        </div>
+        <div class="header-controls">
+          <button id="btn-log" class="small-btn">履歴</button>
+          <button id="btn-to-title" class="small-btn">タイトル</button>
+        </div>
+      </header>
+
+      <!-- パラメータ表示バー（確認・没入用） -->
+      <div class="param-bar">
+        <span id="protagonist-name-display">主人公</span>
+        <div class="params">
+          <span>信念: <strong id="param-faith">0</strong></span>
+          <span>絆: <strong id="param-bond">0</strong></span>
+          <span>適応: <strong id="param-adapt">0</strong></span>
+        </div>
+      </div>
+
+      <!-- 背景・立ち絵プレースホルダー -->
+      <div class="stage-area">
+        <div id="bg-placeholder" class="bg-box">背景: 長崎の港</div>
+        <div id="chara-placeholder" class="chara-box">立ち絵表示領域</div>
+      </div>
+
+      <!-- 会話ウィンドウ -->
+      <div class="message-window">
+        <div id="story-text" class="story-text">ここに本文が表示されます。</div>
+        <div id="story-sources" class="story-sources"></div>
+
+        <!-- 選択肢表示領域 -->
+        <div id="choices-container" class="choices-container"></div>
+
+        <!-- 次へボタン -->
+        <div class="next-btn-wrapper">
+          <button id="btn-next" class="primary-btn">次へ ▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. エンディング・史実解説画面 -->
+    <section id="ending-screen" class="screen">
+      <h2 id="ending-title" class="screen-title">終章：それぞれの運命</h2>
+      
+      <div class="ending-box">
+        <h3>【物語の結末】</h3>
+        <div id="ending-text" class="ending-text"></div>
+        <div id="ending-reflection" class="ending-reflection"></div>
+      </div>
+
+      <div class="historical-box">
+        <h3>【史実解説と出典】</h3>
+        <div id="historical-note" class="historical-note"></div>
+        <div id="historical-sources" class="historical-sources"></div>
+      </div>
+
+      <div class="menu-buttons">
+        <button id="btn-reselect" class="primary-btn">別の主人公を選ぶ</button>
+        <button id="btn-ending-to-title" class="secondary-btn">タイトルへ戻る</button>
+      </div>
+    </section>
+
+    <!-- モーダル（人物紹介・会話ログ共通） -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+      <div class="modal-content">
+        <h3 id="modal-title">タイトル</h3>
+        <div id="modal-body" class="modal-body"></div>
+        <button id="btn-close-modal" class="secondary-btn">閉じる</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="story.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
