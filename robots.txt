@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://itsukiaida.github.io/tensho-adventure/sitemap.xml
